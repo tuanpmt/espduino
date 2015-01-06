@@ -93,6 +93,7 @@ void loop() {
 
 ```
 ISSUE
+=====
 Almost everything is done, can send MQTT connect message, subscribe message, and receive data, BUT it was crazy here:
 
 ```c
