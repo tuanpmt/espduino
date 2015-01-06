@@ -108,7 +108,7 @@ BOOL ESP::receive(U8 *data, U16 *len)
     _debug->println(lenInt, DEC);
    
     *len = lenInt;
-    /* ISSUSE HERE: I can read max data is lenInt -1 */
+    /* ISSUE HERE: I can't read max data to lenInt */
     return (_serial->readBytes((char*)data, lenInt) == lenInt);  
   }
   return FALSE;
@@ -116,4 +116,5 @@ BOOL ESP::receive(U8 *data, U16 *len)
 ```
 
 I have a lot of busy. So can someone help me complete this project.
+
 Thanks
