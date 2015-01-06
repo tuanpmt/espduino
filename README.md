@@ -108,7 +108,7 @@ BOOL ESP::receive(U8 *data, U16 *len)
     _debug->println(lenInt, DEC);
    
     *len = lenInt;
-    /* ISSUE HERE: I can't read max data to lenInt */
+    /* ISSUE HERE: I can't read max data to lenInt  (alway return false) */
     return (_serial->readBytes((char*)data, lenInt) == lenInt);  
   }
   return FALSE;
