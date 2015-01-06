@@ -1,27 +1,3 @@
-espduino
-========
-This is MQTT client for arduino connect to broker via ESP8266 AT command, port from [MQTT client library for Contiki](https://github.com/esar/contiki-mqtt)
-
-You can find the Native MQTT client library for ESP8266 work well here: https://github.com/tuanpmt/esp_mqtt
-
-
-Features
-========
-
-
-- Support subscribing, publishing, authentication, will messages, keep alive pings and all 3 QoS levels (it should be a fully functional client).
-- Easy to setup and use
-
-
-Status
-========
-**NOT Working**
-
-
-Usage
-=======
-
-```c
 #include "esp8266.h"
 #include <SoftwareSerial.h>
 
@@ -91,4 +67,5 @@ void loop() {
   esp.process();
 }
 
-```
+
+
