@@ -92,3 +92,27 @@ void loop() {
 }
 
 ```
+ISSUE
+Almost everything is done, can send MQTT connect message, subscribe message, and receive data, BUT it was crazy here:
+
+```c
+BOOL ESP::receive(U8 *data, U16 *len)
+{
+  U16 lenInt;
+  _serial->setTimeout(300);
+  if(_serial->find("+IPD,")) {
+    lenInt = _serial->parseInt();
+    if(!_serial->find(":"))
+      return FALSE;
+    _debug->println(lenInt, DEC);
+   
+    *len = lenInt;
+    /* ISSUSE HERE: I can read max data is lenInt -1 */
+    return (_serial->readBytes((char*)data, lenInt) == lenInt);  
+  }
+  return FALSE;
+}
+```
+
+I have a lot of busy. So can someone help me complete this project.
+Thanks

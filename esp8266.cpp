@@ -351,7 +351,7 @@ BOOL ESP::receive(U8 *data, U16 *len)
     _debug->println(lenInt, DEC);
    
     *len = lenInt;
-    /* ISSUS HERE: I can read max data is lenInt -1 */
+    /* ISSUSE HERE: I can read max data is lenInt -1 */
     return (_serial->readBytes((char*)data, lenInt) == lenInt);  
   }
   return FALSE;
