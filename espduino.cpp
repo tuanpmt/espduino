@@ -361,7 +361,7 @@ void ESP::disable()
 
 BOOL ESP::reset()
 {
-  return exec("AT+RST", "\r\nready\r\n", 5000);
+  return exec("AT+RST", "[System Ready, Vendor:www.ai-thinker.com]", 5000);
 }
 
 
