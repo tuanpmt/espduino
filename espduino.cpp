@@ -1,3 +1,10 @@
+/**
+ * \file
+ *       MQTT client for Arduino over ESP8266 (AT Command) 
+ * \author
+ *       Tuan PM <tuanpm@live.com>
+ */
+ 
 #include "espduino.h"
 #include "FP.h"
 
