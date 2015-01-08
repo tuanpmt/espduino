@@ -61,7 +61,7 @@ BOOL ESP::wifiConnect(const char* ssid, const char* pass)
   CHECK(!reset(), "RESET ESP failed");
   INFO("RESET ESP done");
   CHECK(!exec("ATE0", "OK", 1000), "ATE0 failed");
-  CHECK(!exec("AT+CWMODE=1", "OK", 1000), "CWMODE failed");
+  CHECK(exec("AT+CWMODE=1", "ERROR", 1000), "CWMODE failed");
   delay(200);
   CHECK(!exec(temp, "OK", 30000), "CWJAP failed");
   wifiCb(0);
