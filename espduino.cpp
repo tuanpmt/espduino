@@ -78,6 +78,18 @@ BOOL ESP::mqttConnect(const char* host, U16 port)
   INFO("TCP: Connected");
   connState = MQTT_CONNECT_SEND;
 }
+
+BOOL ESP::publish(char* topic, char* data, int data_length, int qos, int retain)
+{
+	if(connState != MQTT_DATA)
+		return false;
+	INFO("MQTT: sending publish...\r\n");
+	mqtt_state.outbound_message = mqtt_msg_publish(&mqtt_state.mqtt_connection,
+										topic, data, data_length,
+										qos, retain,
+										&mqtt_state.pending_msg_id);
+}
+
 BOOL ESP::subscribe(char* topic)
 {
   INFO("MQTT: subscribe, topic");

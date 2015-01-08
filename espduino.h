@@ -69,6 +69,7 @@ public:
   BOOL initMqttClient(const char *clientId, const char *user, const char *pass, U32 keepalive);
   BOOL wifiConnect(const char* ssid, const char* pass);
   BOOL mqttConnect(const char* host, U16 port);
+  BOOL publish(char* topic, char* data, int data_length, int qos, int retain);
   BOOL subscribe(char* topic);
   void process();
   void enable();
