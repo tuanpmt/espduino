@@ -34,13 +34,16 @@ cd espduino
 ```
 
 **2. Program ESP8266:**
-    - Wiring: ![Program Connection diagram](fritzing/program_esp8266_bb.png?raw=true)
-    - Program release firmware
+
+- Wiring: ![Program Connection diagram](fritzing/program_esp8266_bb.png?raw=true)
+- Program release firmware:
+
 ```python
 esp8266/tools/esptool.py -p COM1 write_flash 0x00000 esp8266/release/0x00000.bin 0x40000 esp8266/release/0x40000.bin
 ```
     
-    - Or Program debug firmware (Debug message from ESP8266 will forward to debug port of Arduino)
+- Or Program debug firmware (Debug message from ESP8266 will forward to debug port of Arduino)
+
 ```python
 esp8266/tools/esptool.py -p COM1 write_flash 0x00000 esp8266/debug/0x00000.bin 0x40000 esp8266/debug/0x40000.bin
 ```
