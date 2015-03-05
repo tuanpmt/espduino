@@ -26,24 +26,29 @@ Features
 
 Installations
 ========
-1. Clone this project:
+**1. Clone this project:**
+
 ```bash
 git clone https://github.com/tuanpmt/espduino
 cd espduino
 ```
-2. Program ESP8266
+
+**2. Program ESP8266:**
     - Wiring: ![Program Connection diagram](fritzing/program_esp8266_bb.png?raw=true)
     - Program release firmware
 ```python
 esp8266/tools/esptool.py -p COM1 write_flash 0x00000 esp8266/release/0x00000.bin 0x40000 esp8266/release/0x40000.bin
 ```
+    
     - Or Program debug firmware (Debug message from ESP8266 will forward to debug port of Arduino)
 ```python
 esp8266/tools/esptool.py -p COM1 write_flash 0x00000 esp8266/debug/0x00000.bin 0x40000 esp8266/debug/0x40000.bin
 ```
-3. Wiring: ![Program Connection diagram](fritzing/espdruino_bb.png?raw=true)
-4. Import arduino library and run example
-5. Dance
+
+**3. Wiring:**
+![Program Connection diagram](fritzing/espdruino_bb.png?raw=true)
+
+**4. Import arduino library and run example:**
 
 
 Example for MQTT client
@@ -282,6 +287,10 @@ void setHeader(const char* value);
 Authors:
 =================
 [Tuan PM](https://twitter.com/TuanPMT)
+
+Limited:
+=========
+- Firmware for ESP8266 currently not open source
 
 
 **LICENSE - "MIT License"**
