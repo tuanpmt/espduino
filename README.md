@@ -2,17 +2,20 @@ espduino
 ========
 This is Wifi library (Chip ESP8266 Wifi soc) for arduino using SLIP protocol via Serial port
 
-You can find the **Native MQTT client** library for ESP8266 work well here: 
+You can found the **Native MQTT client** library for ESP8266 work well here: 
 [https://github.com/tuanpmt/esp_mqtt](https://github.com/tuanpmt/esp_mqtt)
 
+Source code bridge for ESP8266 can found here: [https://github.com/tuanpmt/esp_bridge](https://github.com/tuanpmt/esp_bridge)
 
 Features
 ========
-- Rock Solid wifi network client for Arduino
+- Rock Solid wifi network client for Arduino (of course need to test more and resolve more issues :v)
+- **More reliable** than AT COMMAND library (Personal comments)
+- **Firmware applications written on ESP8266 can be read out completely. For security applications, sometimes you should use it as a Wifi client (network client) and other MCU with Readout protection.**
 - MQTT module: 
     + MQTT client run stable as Native MQTT client (esp_mqtt)
     + Support subscribing, publishing, authentication, will messages, keep alive pings and all 3 QoS levels (it should be a fully functional client).
-    + Support multiple connection (to multiple hosts).
+    + **Support multiple connection (to multiple hosts).**
     + Support SSL
     + Easy to setup and use
 - REST module:
@@ -21,7 +24,6 @@ Features
     + Easy to used API
     + Support SSL
 - WIFI module:
-- mDNS module: (coming soon)
 
 
 Installations
@@ -295,8 +297,12 @@ Authors:
 
 Limited:
 =========
-- Firmware for ESP8266 currently not open source
+- Firmware for ESP8266 currently not open source (Opensouce now)
 
+Donations
+==================
+Invite me to a coffee
+[![Donate](https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JR9RVLFC4GE6J)
 
 LICENSE - "MIT License"
 ==================
