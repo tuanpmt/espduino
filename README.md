@@ -1,4 +1,4 @@
-espduino
+espduino - Xavier Werquin
 ========
 This is Wifi library (Chip ESP8266 Wifi soc) for arduino using SLIP protocol via Serial port
 
