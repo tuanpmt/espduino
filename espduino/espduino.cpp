@@ -135,7 +135,7 @@ uint16_t ESP::request(uint16_t cmd, uint32_t callback, uint32_t _return, uint16_
 uint16_t ESP::request(uint16_t crc_in, uint8_t* data, uint16_t len)
 {
   uint8_t temp = 0;
-  uint8_t pad_len = len;
+  uint16_t pad_len = len;
   while(pad_len % 4 != 0)
     pad_len++;
 
