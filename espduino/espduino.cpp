@@ -83,7 +83,9 @@ void ESP::protoCompletedCb(void)
   }
   resp_crc =  *(uint16_t*)data_ptr;
   if(crc != resp_crc) {
-    _debug->println("ARDUINO: Invalid CRC");
+    if(_debugEn) {
+      _debug->println("ARDUINO: Invalid CRC");
+    }
     return;
   }
 
@@ -171,14 +173,14 @@ void ESP::init()
 }
 
 ESP::ESP(Stream *serial, int chip_pd):
-_serial(serial), _chip_pd(_chip_pd)
+_serial(serial), _chip_pd(chip_pd)
 {
   _debugEn = false;
   init();
 }
 
 ESP::ESP(Stream *serial, Stream* debug, int chip_pd):
-_serial(serial), _debug(debug), _chip_pd(_chip_pd)
+_serial(serial), _debug(debug), _chip_pd(chip_pd)
 {
     _debugEn = true;
     //_serial = _debug;
@@ -262,7 +264,9 @@ void ESP::process()
     
     default:
       if(_proto.isBegin == 0) {
-        _debug->write(value);
+        if(_debugEn) {
+            _debug->write(value);
+        }
         break;
       }
       if(_proto.isEsc){
