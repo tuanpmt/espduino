@@ -83,9 +83,7 @@ void ESP::protoCompletedCb(void)
   }
   resp_crc =  *(uint16_t*)data_ptr;
   if(crc != resp_crc) {
-    if(_debugEn) {
-      _debug->println("ARDUINO: Invalid CRC");
-    }
+      INFO("ARDUINO: Invalid CRC");
     return;
   }
 
