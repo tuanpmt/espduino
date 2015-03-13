@@ -94,7 +94,7 @@ public:
   uint16_t return_cmd;
   boolean is_return;
 
-  void wifiConnect(String ssid, String password);
+  void wifiConnect(const char* ssid, const char* password);
   void process();
   uint16_t request(uint16_t cmd, uint32_t callback, uint32_t _return, uint16_t argc);
   uint16_t request(uint16_t crc_in, uint8_t* data, uint16_t len);
@@ -110,7 +110,7 @@ private:
   
   boolean _debugEn;
   PROTO _proto;
-  uint8_t _protoBuf[1024];
+  uint8_t _protoBuf[512];
   int _chip_pd;
   
 

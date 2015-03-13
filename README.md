@@ -55,6 +55,11 @@ esp8266/tools/esptool.py -p COM1 write_flash 0x00000 esp8266/debug/0x00000.bin 0
 
 **4. Import arduino library and run example:**
 
+Example read DHT11 and send to [thingspeak.com](http://thingspeak.com)
+=========
+- Using DHT11 library from: [https://github.com/RobTillaart/Arduino](https://github.com/RobTillaart/Arduino)
+
+![](images/thingspeak.png)
 
 Example for MQTT client
 =======

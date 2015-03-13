@@ -19,13 +19,15 @@ void REST::restCallback(void *resp)
 
 boolean REST::begin(const char* host, uint16_t port, boolean security)
 {
-  
+  uint8_t sec = 0;
+  if(security)
+    sec = 1;
   restCb.attach(this, &REST::restCallback);
   
   uint16_t crc = esp->request(CMD_REST_SETUP, (uint32_t)&restCb, 1, 3);
   crc = esp->request(crc,(uint8_t*)host, strlen(host));
   crc = esp->request(crc,(uint8_t*)&port, 2);
-  crc = esp->request(crc,(uint8_t*)&security, 1);
+  crc = esp->request(crc,(uint8_t*)&sec, 1);
   esp->request(crc);
 
   if(esp->waitReturn(timeout) && esp->return_value != 0){

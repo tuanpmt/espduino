@@ -106,12 +106,12 @@ void ESP::protoCompletedCb(void)
   }
 }
 
-void ESP::wifiConnect(String ssid, String password)
+void ESP::wifiConnect(const char* ssid, const char* password)
 {
   uint16_t crc;
   crc = request(CMD_WIFI_CONNECT, (uint32_t)&wifiCb, 0, 2);
-  crc = request(crc,(uint8_t*)ssid.c_str(), ssid.length());
-  crc = request(crc,(uint8_t*)password.c_str(), password.length());
+  crc = request(crc,(uint8_t*)ssid, strlen(ssid));
+  crc = request(crc,(uint8_t*)password, strlen(password));
   request(crc);
 }
 
@@ -138,7 +138,6 @@ uint16_t ESP::request(uint16_t crc_in, uint8_t* data, uint16_t len)
   uint16_t pad_len = len;
   while(pad_len % 4 != 0)
     pad_len++;
-
   _serial->write((uint8_t*)&pad_len, 2);
   crc_in = crc16_data((uint8_t*)&pad_len, 2, crc_in);
   while(len --){
