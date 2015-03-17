@@ -57,9 +57,15 @@ esp8266/tools/esptool.py -p COM1 write_flash 0x00000 esp8266/debug/0x00000.bin 0
 
 Example read DHT11 and send to [thingspeak.com](http://thingspeak.com)
 =========
+- ```espduino/examples/thingspeak/thingspeak.ino```
 - Using DHT11 library from: [https://github.com/RobTillaart/Arduino](https://github.com/RobTillaart/Arduino)
 
 ![](images/thingspeak.png)
+
+Example send pushbullet push notification:
+=============
+[http://tuanpm.net/pir-motion-detect-send-pushbullet-push-notification-with-esp8266/](http://tuanpm.net/pir-motion-detect-send-pushbullet-push-notification-with-esp8266/)
+
 
 Example for MQTT client
 =======
