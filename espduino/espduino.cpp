@@ -114,48 +114,66 @@ void ESP::wifiConnect(const char* ssid, const char* password)
   crc = request(crc,(uint8_t*)password, strlen(password));
   request(crc);
 }
-
+void ESP::write(uint8_t data)
+{
+  switch(data){
+  case SLIP_START:
+  case SLIP_END:
+  case SLIP_REPL:
+    _serial->write(SLIP_REPL);
+    _serial->write(SLIP_ESC(data));
+    break;
+  default:
+    _serial->write(data);
+  }
+}
+void ESP::write(uint8_t* data, uint16_t len)
+{
+  while(len --)
+    write(*data ++);
+}
 uint16_t ESP::request(uint16_t cmd, uint32_t callback, uint32_t _return, uint16_t argc)
 {
   uint16_t crc = 0;
   _serial->write(0x7E);
-  _serial->write((uint8_t*)&cmd, 2);
+  write((uint8_t*)&cmd, 2);
   crc = crc16_data((uint8_t*)&cmd, 2, crc);
 
-  _serial->write((uint8_t*)&callback, 4);
+  write((uint8_t*)&callback, 4);
   crc = crc16_data((uint8_t*)&callback, 4, crc);
 
-  _serial->write((uint8_t*)&_return, 4);
+  write((uint8_t*)&_return, 4);
   crc = crc16_data((uint8_t*)&_return, 4, crc);
 
-  _serial->write((uint8_t*)&argc, 2);
+  write((uint8_t*)&argc, 2);
   crc = crc16_data((uint8_t*)&argc, 2, crc);
   return crc;
 }
+
 uint16_t ESP::request(uint16_t crc_in, uint8_t* data, uint16_t len)
 {
   uint8_t temp = 0;
   uint16_t pad_len = len;
   while(pad_len % 4 != 0)
     pad_len++;
-  _serial->write((uint8_t*)&pad_len, 2);
+  write((uint8_t*)&pad_len, 2);
   crc_in = crc16_data((uint8_t*)&pad_len, 2, crc_in);
   while(len --){
-    _serial->write(*data);
+    write(*data);
     crc_in = crc16_data((uint8_t*)data, 1, crc_in);
     data ++;
     if(pad_len > 0) pad_len --;
   }
   
   while(pad_len --){
-    _serial->write(temp);
+    write(temp);
     crc_in = crc16_data((uint8_t*)&temp, 1, crc_in);
   }
   return crc_in;
 }
 uint16_t ESP::request(uint16_t crc)
 {
-  _serial->write((uint8_t*)&crc, 2);
+  write((uint8_t*)&crc, 2);
   _serial->write(0x7F);
 }
 

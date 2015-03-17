@@ -14,6 +14,12 @@
 #include "ringbuf.h"
 
 #define ESP_TIMEOUT 2000
+
+#define SLIP_START 0x7E
+#define SLIP_END  0x7F
+#define SLIP_REPL 0x7D
+#define SLIP_ESC(x) (x ^ 0x20)
+
 typedef enum
 {
   CMD_NULL = 0,
@@ -105,6 +111,7 @@ public:
   void disable();
   boolean waitReturn(uint32_t timeout);
   boolean waitReturn();
+
 private:
   Stream *_serial;
   
@@ -117,5 +124,7 @@ private:
   void init();
   void INFO(String info);
   void protoCompletedCb(void);
+  void write(uint8_t data);
+  void write(uint8_t* data, uint16_t len);
 };
 #endif
