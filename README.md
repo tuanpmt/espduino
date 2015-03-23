@@ -9,7 +9,7 @@ Source code bridge for ESP8266 can found here: [https://github.com/tuanpmt/esp_b
 
 Features
 ========
-- Rock Solid wifi network client for Arduino (of course need to test more and resolve more issues :v)
+- Rock Solid wifi network client for Arduino/mbed (coming soon)
 - **More reliable** than AT COMMAND library (Personal comments)
 - **Firmware applications written on ESP8266 can be read out completely. For security applications, sometimes you should use it as a Wifi client (network client) and other MCU with Readout protection.**
 - MQTT module: 
@@ -23,8 +23,13 @@ Features
     + setContent type, set header, set User Agent
     + Easy to used API
     + Support SSL
-- WIFI module:
-
+    + Support multiple connection
+### To-Do:
+- WIFI AP  
+- Webserver module
+- NTP module
+- RTC + Memory
+- mDNS module
 
 Installations
 ========
@@ -296,19 +301,17 @@ void del(const char* path, const char* data);
 
 void setTimeout(uint32_t ms);
 uint16_t getResponse(char* data, uint16_t maxLen);
-void setUserAgent(const char* value);
+void setUserAgent(const char* value); //setUserAgent("Your user agent"); 
 // Set Content-Type Header
-void setContentType(const char* value);
-void setHeader(const char* value);
+void setContentType(const char* value); //setContentType("application/json");
+void setHeader(const char* value);//setHeaer("Header1:value1\r\nHeader2:value2\r\n");
 ```
 
 Authors:
 =================
-[Tuan PM](https://twitter.com/TuanPMT)
+[Tuan PM](https://twitter.com/tuanpmt)
 
-Limited:
-=========
-- Firmware for ESP8266 currently not open source (Opensouce now)
+
 
 Donations
 ==================
@@ -317,7 +320,7 @@ Invite me to a coffee
 
 LICENSE - "MIT License"
 ==================
-Copyright (c) 2014-2015 Tuan PM, https://twitter.com/TuanPMT
+Copyright (c) 2014-2015 [Tuan PM](https://twitter.com/tuanpmt)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
