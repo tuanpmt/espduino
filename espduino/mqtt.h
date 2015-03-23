@@ -33,7 +33,7 @@ public:
   void disconnect();
   void subscribe(const char* topic, uint8_t qos);
   void subscribe(const char* topic);
-  void publish(const char* topic, uint8_t *data, uint8_t len, uint8_t qos, uint8_t retain);
+  void publish(const char* topic, uint8_t *data, uint16_t len, uint8_t qos, uint8_t retain);
   void publish(const char* topic, char* data, uint8_t qos, uint8_t retain);
   void publish(const char* topic, char* data);
 

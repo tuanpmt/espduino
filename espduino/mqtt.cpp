@@ -99,13 +99,14 @@ void MQTT::subscribe(const char* topic)
 {
   subscribe(topic, 0);
 }
-void MQTT::publish(const char* topic, uint8_t *data, uint8_t len, uint8_t qos, uint8_t retain)
+void MQTT::publish(const char* topic, uint8_t *data, uint16_t len, uint8_t qos, uint8_t retain)
 {
   uint16_t crc;
-  crc = esp->request(CMD_MQTT_PUBLISH, 0, 0, 5);
+  crc = esp->request(CMD_MQTT_PUBLISH, 0, 0, 6);
   crc = esp->request(crc,(uint8_t*)&remote_instance, 4);
   crc = esp->request(crc,(uint8_t*)topic, strlen(topic));
   crc = esp->request(crc,(uint8_t*)data, len);
+  crc = esp->request(crc,(uint8_t*)&len, 2);
   crc = esp->request(crc,(uint8_t*)&qos, 1);
   crc = esp->request(crc,(uint8_t*)&retain, 1);
   esp->request(crc);
