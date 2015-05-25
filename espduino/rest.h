@@ -4,8 +4,8 @@
  * \author
  *       Tuan PM <tuanpm@live.com>
  */
-#ifndef _MQTT_H_
-#define _MQTT_H_
+#ifndef _REST_H_
+#define _REST_H_
 
 #include <stdint.h>
 #include <Arduino.h>
