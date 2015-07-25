@@ -225,8 +225,7 @@ boolean ESP::ready()
 {
   uint32_t wait;
 
-  uint8_t wait_time = 5;
-  while(wait_time--){
+  for(uint8_t wait_time=5; wait_time>0; wait_time--){
     is_return = false;
     return_value = 0;
     uint16_t crc = request(CMD_IS_READY, 0, 1, 0);
