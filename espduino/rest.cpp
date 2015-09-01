@@ -108,7 +108,7 @@ void REST::setUserAgent(const char* value)
   uint8_t header_index = HEADER_USER_AGENT;
   uint16_t crc = esp->request(CMD_REST_SETHEADER, 0, 0, 3);
   crc = esp->request(crc,(uint8_t*)&remote_instance, 4);
-  crc = esp->request(crc,(uint8_t*)&header_index, 4);
+  crc = esp->request(crc,(uint8_t*)&header_index, 1);
   crc = esp->request(crc,(uint8_t*)value, strlen(value));
   esp->request(crc);
 }
