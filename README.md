@@ -2,7 +2,7 @@ espduino
 ========
 
 # WARNING: This project discontinue support, 
-if you want to play ESP8266 with arduino, please visit: [Arduino for ESP8266](https://github.com/esp8266/Arduino)
+# if you want to play ESP8266 with arduino, please visit: [Arduino for ESP8266](https://github.com/esp8266/Arduino)
 
 This is Wifi library (Chip ESP8266 Wifi soc) for arduino using SLIP protocol via Serial port
 
